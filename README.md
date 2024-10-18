@@ -19,6 +19,7 @@ main :: proc() {
 	tb2.init();defer tb2.shutdown()
 
 	tb2.printf(0, 0, .Red, .Default, "width=%d height=%d", tb2.width(), tb2.height())
+	tb2.present()
 
 	ev: tb2.Event
 	tb2.poll_event(&ev)

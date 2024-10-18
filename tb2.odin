@@ -182,8 +182,8 @@ foreign termboxlib {
 	init_rwfd :: proc(rfd, wfd: i32) -> Status ---
 	shutdown :: proc() -> Status ---
 
-	width :: proc() -> Status ---
-	height :: proc() -> Status ---
+	width :: proc() -> i32 ---
+	height :: proc() -> i32 ---
 
 	clear :: proc() -> Status ---
 	set_clear_attrs :: proc(fg, bg: Color) -> Status ---
