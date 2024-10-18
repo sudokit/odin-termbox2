@@ -13,14 +13,12 @@ sudo ldconfig
 ```odin
 package main
 
-import "core:fmt"
-
 import tb2 "shared:odin-tb2"
 
 main :: proc() {
 	tb2.init();defer tb2.shutdown()
 
-	tb2.print(0, 0, .Red, .Default, fmt.ctprintf("width=%d height=%d", tb2.width(), tb2.height()))
+	tb2.printf(0, 0, .Red, .Default, "width=%d height=%d", tb2.width(), tb2.height())
 	tb2.present()
 
 	ev: tb2.Event
