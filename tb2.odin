@@ -1,7 +1,5 @@
 package tb2
 
-import "core:c"
-
 Key :: enum u16 {
 	Ctrl_Tilde       = 0x00,
 	Ctrl_2           = 0x00,
@@ -127,7 +125,7 @@ Color :: enum u16 {
 	Dim       = 0x8000,
 }
 
-Status :: enum {
+Status :: enum i32 {
 	Ok               = 0,
 	Err              = -1,
 	Need_more        = -2,
@@ -159,9 +157,6 @@ Cell :: struct {
 	ch:     rune,
 	fg, bg: Color,
 }
-
-@(private = "file")
-Vec2 :: [2]i32
 
 Event :: struct {
 	type: Event_Kind,
@@ -204,6 +199,7 @@ foreign termboxlib {
 	poll_event :: proc(event: ^Event) -> Status ---
 	get_fds :: proc(ttyfd, resizefd: i32) -> Status ---
 	print :: proc(x, y: i32, fg, bg: Color, str: cstring) -> Status ---
+	printf :: proc(x, y: i32, fg, bg: Color, fmt: cstring, #c_vararg args: ..any) -> Status ---
 	utf8_char_length :: proc(c: rune) -> Status ---
 	last_errno :: proc() -> Status ---
 	strerror :: proc(err: Status) -> cstring ---
