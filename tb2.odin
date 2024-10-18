@@ -204,7 +204,6 @@ foreign termboxlib {
 	poll_event :: proc(event: ^Event) -> Status ---
 	get_fds :: proc(ttyfd, resizefd: i32) -> Status ---
 	print :: proc(x, y: i32, fg, bg: Color, str: cstring) -> Status ---
-	printf :: proc(x, y: i32, fg, bg: Color, msg: cstring, format: ..any) -> Status ---
 	utf8_char_length :: proc(c: rune) -> Status ---
 	last_errno :: proc() -> Status ---
 	strerror :: proc(err: Status) -> cstring ---
